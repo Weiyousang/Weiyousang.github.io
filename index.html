@@ -6,120 +6,153 @@
     <title>Weiyousang | 嵌入式系統與邊緣運算</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#1a73e8', // 定義一個專業的工程藍
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body { font-family: 'Noto Sans TC', sans-serif; }
-        /* 平滑滾動與漸變設定 */
         html { scroll-behavior: smooth; }
         .hover-card { transition: all 0.3s ease; }
-        .hover-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
+        /* 懸停時，卡片浮起並顯示藍色邊框 */
+        .hover-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(26, 115, 232, 0.1); border-color: #1a73e8; }
+        
+        /* 替預設圖片預留一個灰色背景與相機圖示 */
+        .img-placeholder {
+            background-color: #f1f3f4;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23dadce0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z'%3E%3C/path%3E%3Ccircle cx='12' cy='13' r='4'%3E%3C/circle%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 leading-relaxed">
+<body class="bg-white text-gray-800 leading-relaxed">
 
-    <nav class="bg-white shadow-sm fixed w-full z-10 top-0">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="font-bold text-xl tracking-wider text-gray-900">Weiyousang.</a>
-            <div class="space-x-6 text-sm font-medium text-gray-600">
-                <a href="#about" class="hover:text-blue-600 transition-colors">關於我</a>
-                <a href="#projects" class="hover:text-blue-600 transition-colors">專案實作</a>
+    <nav class="bg-white fixed w-full z-10 top-0 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-bold text-xl text-brand-blue tracking-tight">Weiyousang.</a>
+            <div class="space-x-8 text-sm font-medium text-gray-700">
+                <a href="#about" class="hover:text-brand-blue transition-colors">關於我</a>
+                <a href="#projects" class="hover:text-brand-blue transition-colors">專案作品</a>
             </div>
         </div>
     </nav>
 
-    <header class="pt-32 pb-20 px-6 max-w-5xl mx-auto flex flex-col items-start">
-        <div class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-blue-800 bg-blue-100 rounded-full">
-            AVAILABLE FOR OPPORTUNITIES
+    <header class="pt-40 pb-28 px-6 max-w-6xl mx-auto text-center flex flex-col items-center">
+        <div class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-white bg-brand-blue rounded-full">
+            Available for Research & Internship
         </div>
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
-            通訊工程 × 嵌入式系統 × 邊緣運算
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tighter max-w-4xl">
+            通訊工程 × 嵌入式系統 × <span class="text-brand-blue">邊緣運算</span>
         </h1>
-        <p class="text-lg text-gray-600 mb-8 max-w-2xl">
+        <p class="text-xl text-gray-600 mb-10 max-w-3xl font-light">
             致力於底層硬體操作、通訊系統開發，並探索如何將深度學習演算法落地於邊緣運算硬體平台。
         </p>
-        <div class="flex space-x-4">
-            <a href="https://github.com/Weiyousang" target="_blank" class="px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors shadow-md">
-                查看 GitHub
+        <div class="flex space-x-5">
+            <a href="https://github.com/Weiyousang" target="_blank" class="px-8 py-3 bg-gray-900 text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors shadow-lg">
+                查看 GitHub Profile
             </a>
-            <a href="#projects" class="px-6 py-3 bg-white text-gray-900 text-sm font-medium rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors shadow-sm">
+            <a href="#projects" class="px-8 py-3 bg-white text-brand-blue text-sm font-medium rounded-full border border-gray-300 hover:border-brand-blue hover:bg-blue-50 transition-all shadow-sm">
                 瀏覽作品集 ↓
             </a>
         </div>
     </header>
 
-    <section id="about" class="bg-white py-20 px-6 border-y border-gray-200">
-        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
-            <div>
-                <h2 class="text-xs font-bold tracking-widest text-gray-400 mb-2 uppercase">01 / About Me</h2>
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">結合通訊理論與硬體實務</h3>
-                <p class="text-gray-600 mb-4">
-                    目前就讀於國立台灣海洋大學通訊與導航工程學系碩士班，隸屬於智慧控制實驗室。
-                </p>
-                <p class="text-gray-600">
-                    曾於威聯通科技 (QNAP) 擔任硬體測試實習生，累積伺服器與硬體設備除錯的實戰經驗。平時熱衷於將課程實作與研究專案開源，從 8051 微處理機到底層通訊電路皆有涉獵。
-                </p>
+    <section id="about" class="bg-blue-50 py-28 px-6 border-y border-blue-100">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-16 items-center">
+            <div class="md:col-span-4 flex justify-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white shadow-xl img-placeholder">
+                    <img src="profile.jpg" alt="Weiyousang" class="w-full h-full object-cover">
+                </div>
             </div>
-            <div>
-                <h2 class="text-xs font-bold tracking-widest text-gray-400 mb-2 uppercase">Skills & Tools</h2>
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">專業技能</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md border border-gray-200">C / C++</span>
-                    <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md border border-gray-200">Python</span>
-                    <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md border border-gray-200">Kotlin</span>
-                    <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md border border-gray-200">MATLAB</span>
-                    <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md border border-gray-200">Assembly</span>
-                    <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md border border-gray-200">VHDL</span>
-                    <span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-md border border-blue-200 font-medium">NVIDIA Jetson</span>
-                    <span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-md border border-blue-200 font-medium">YOLO (規劃學習中)</span>
-                    <span class="px-3 py-1 bg-gray-800 text-white text-sm rounded-md font-medium">Microsoft AI-900</span>
+            <div class="md:col-span-8">
+                <h2 class="text-sm font-bold tracking-widest text-brand-blue mb-2 uppercase">01 / About Me</h2>
+                <h3 class="text-3xl font-bold text-gray-900 mb-6 tracking-tight">國立臺灣海洋大學 | 智慧控制實驗室</h3>
+                <p class="text-lg text-gray-700 mb-5 font-light">
+                    我是就讀於國立臺灣海洋大學通訊與導航工程學系碩士班的 Weiyousang。
+                </p>
+                <p class="text-gray-600 mb-6">
+                    在研究生涯中，我對底層硬體操作、通訊系統以及邊緣運算抱有濃厚興趣。曾於威聯通科技 (QNAP) 擔任硬體測試實習生，累積伺服器與硬體設備除錯的實戰經驗。平常熱衷於將課程實作與研究專案開源，從 8051 微處理機到底層通訊電路皆有涉獵。
+                </p>
+                <div class="flex flex-wrap gap-2.5">
+                    <span class="px-3 py-1 bg-white text-gray-700 text-xs rounded-full border border-gray-200">C / C++</span>
+                    <span class="px-3 py-1 bg-white text-gray-700 text-xs rounded-full border border-gray-200">Python</span>
+                    <span class="px-3 py-1 bg-white text-gray-700 text-xs rounded-full border border-gray-200">Kotlin</span>
+                    <span class="px-3 py-1 bg-white text-gray-700 text-xs rounded-full border border-gray-200">MATLAB</span>
+                    <span class="px-3 py-1 bg-white text-gray-700 text-xs rounded-full border border-gray-200">VHDL</span>
+                    <span class="px-3 py-1 bg-brand-blue text-white text-xs rounded-full font-medium">NVIDIA Jetson</span>
+                    <span class="px-3 py-1 bg-brand-blue text-white text-xs rounded-full font-medium">YOLO</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-20 px-6 max-w-5xl mx-auto">
-        <h2 class="text-xs font-bold tracking-widest text-gray-400 mb-2 uppercase">02 / Portfolio</h2>
-        <h3 class="text-3xl font-bold text-gray-900 mb-10">重點專案與實作</h3>
+    <section id="projects" class="py-28 px-6 max-w-6xl mx-auto">
+        <h2 class="text-sm font-bold tracking-widest text-brand-blue mb-2 uppercase text-center">02 / Portfolio</h2>
+        <h3 class="text-4xl font-bold text-gray-900 mb-16 text-center tracking-tight">重點專案與實作</h3>
         
-        <div class="grid md:grid-cols-2 gap-8">
-            <a href="https://github.com/Weiyousang/Navigation-Practicum-Android" target="_blank" class="hover-card bg-white p-8 rounded-2xl border border-gray-100 block">
-                <div class="mb-4 flex flex-wrap gap-2">
-                    <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded font-semibold">Kotlin</span>
+        <div class="grid md:grid-cols-2 gap-10">
+            <a href="https://github.com/Weiyousang/Navigation-Practicum-Android" target="_blank" class="hover-card bg-white p-6 rounded-2xl border border-gray-100 block group overflow-hidden">
+                <div class="h-48 w-full rounded-xl overflow-hidden mb-6 img-placeholder">
+                    <img src="project_nav.jpg" alt="Android Indoor Navigation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                 </div>
-                <h4 class="text-xl font-bold text-gray-900 mb-3">Android 室內慣性導航系統</h4>
-                <p class="text-gray-600 text-sm">利用手機內的加速度計與陀螺儀，實作計步器、移動距離測量以及 2D 軌跡繪製功能。</p>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="px-2.5 py-1 bg-blue-50 text-brand-blue text-xs rounded font-semibold border border-blue-100">Kotlin</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-blue transition-colors">Android 室內慣性導航系統</h4>
+                <p class="text-gray-600 text-sm font-light">利用手機內的加速度計與陀螺儀，實作計步器、移動距離測量以及 2D 軌跡繪製功能。</p>
             </a>
 
-            <a href="https://github.com/Weiyousang/8051-microntrollers" target="_blank" class="hover-card bg-white p-8 rounded-2xl border border-gray-100 block">
-                <div class="mb-4 flex flex-wrap gap-2">
-                    <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded font-semibold">Assembly</span>
+            <a href="https://github.com/Weiyousang/Communication-Systems-Lab" target="_blank" class="hover-card bg-white p-6 rounded-2xl border border-gray-100 block group overflow-hidden">
+                <div class="h-48 w-full rounded-xl overflow-hidden mb-6 img-placeholder">
+                    <img src="project_comm.jpg" alt="Communication Lab Experiments" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                 </div>
-                <h4 class="text-xl font-bold text-gray-900 mb-3">8051 微處理機實作</h4>
-                <p class="text-gray-600 text-sm">微處理機底層硬體控制，包含基於 AT89S51 的揚聲器音樂播放、七段顯示器與 LED 陣列控制。</p>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs rounded font-semibold border border-gray-200">硬體電路</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-blue transition-colors">類比與數位通訊系統實驗</h4>
+                <p class="text-gray-600 text-sm font-light">專注於 AM, DSB, FSK, PSK 及 TDM 等調變解調電路的設計、實作與量測分析。</p>
             </a>
 
-            <a href="https://github.com/Weiyousang/Communication-Systems-Lab" target="_blank" class="hover-card bg-white p-8 rounded-2xl border border-gray-100 block">
-                <div class="mb-4 flex flex-wrap gap-2">
-                    <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded font-semibold">硬體電路</span>
+            <a href="https://github.com/Weiyousang/8051-microntrollers" target="_blank" class="hover-card bg-white p-6 rounded-2xl border border-gray-100 block group overflow-hidden">
+                <div class="h-48 w-full rounded-xl overflow-hidden mb-6 img-placeholder">
+                    <img src="project_8051.PNG" alt="8051 Microcontroller Practice" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                 </div>
-                <h4 class="text-xl font-bold text-gray-900 mb-3">類比與數位通訊系統實驗</h4>
-                <p class="text-gray-600 text-sm">專注於 AM, DSB, FSK, PSK 及 TDM 等調變解調電路的設計、實作與量測分析。</p>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs rounded font-semibold border border-gray-200">Assembly</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-blue transition-colors">8051 微處理機實作專案集</h4>
+                <p class="text-gray-600 text-sm font-light">包含揚聲器音樂播放、七段顯示器與 LED 陣列控制。 | Music player, 7-segment display.</p>
             </a>
 
-            <div class="hover-card bg-white p-8 rounded-2xl border border-gray-100 block relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-yellow-100 text-yellow-800 text-xs font-bold px-3 py-1 rounded-bl-lg">規劃與研究階段</div>
-                <div class="mb-4 flex flex-wrap gap-2 mt-2">
-                    <span class="px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded font-semibold">YOLO</span>
-                    <span class="px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded font-semibold">NVIDIA Jetson</span>
+            <div class="hover-card bg-white p-6 rounded-2xl border border-gray-100 block group overflow-hidden relative border-l-4 border-l-yellow-400">
+                <div class="h-48 w-full rounded-xl overflow-hidden mb-6 img-placeholder">
+                    <img src="project_uav.jpg" alt="UAV Monitoring System" class="w-full h-full object-cover">
                 </div>
-                <h4 class="text-xl font-bold text-gray-900 mb-3">無人機即時監控系統開發</h4>
-                <p class="text-gray-600 text-sm">碩士班研究規劃，預計利用邊緣運算平台部署 YOLO 演算法，實現無人機端即時物件偵測。</p>
+                <div class="mb-3 flex flex-wrap gap-2">
+                    <span class="px-2.5 py-1 bg-blue-50 text-brand-blue text-xs rounded font-semibold border border-blue-100">YOLO</span>
+                    <span class="px-2.5 py-1 bg-blue-50 text-brand-blue text-xs rounded font-semibold border border-blue-100">Edge AI</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">無人機即時監控系統開發</h4>
+                <p class="text-gray-600 text-sm font-light">碩士班研究規劃，預計利用邊緣運算平台部署 YOLO 演算法，實現無人機端的即時物件偵測與環境監控。</p>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-12 text-center">
-        <p class="text-gray-400 text-sm mb-4">© 2026 Weiyousang. All rights reserved.</p>
-        <a href="https://github.com/Weiyousang" target="_blank" class="text-gray-400 hover:text-white transition-colors text-sm">GitHub Profile</a>
+    <footer class="bg-white py-16 text-center border-t border-gray-100">
+        <p class="text-gray-500 text-sm mb-4 font-light">© 2026 Weiyousang. National Taiwan Ocean University.</p>
+        <div class="space-x-6">
+            <a href="https://github.com/Weiyousang" target="_blank" class="text-gray-500 hover:text-brand-blue transition-colors text-sm">GitHub Profile</a>
+        </div>
     </footer>
 
 </body>
